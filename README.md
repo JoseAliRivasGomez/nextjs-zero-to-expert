@@ -1,1 +1,1 @@
-"# next-zero-to-expert" 
+"# nextjs-zero-to-expert" 
