@@ -1,4 +1,4 @@
-import { Grid } from '@nextui-org/react'
+import { Grid, Image } from '@nextui-org/react'
 import type { NextPage, GetStaticProps } from 'next'
 import { Layout } from '../components/layouts/Layout'
 import pokeApi from '../api/pokeApi';
@@ -16,6 +16,12 @@ const HomePage: NextPage<Props> = ({pokemons}) => {
 
     return (
       <Layout title='Listado de Pokemons'>
+
+      {/* <Image
+      src='/img/banner.png'
+      alt='banner'
+      width={200}
+      height={150} /> */}
         
       <Grid.Container gap={2} justify='flex-start'>
         {
