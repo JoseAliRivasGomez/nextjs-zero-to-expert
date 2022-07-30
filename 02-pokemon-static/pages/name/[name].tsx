@@ -138,18 +138,31 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
         //         }
         //     }
         // ],
-        fallback: false
+        //fallback: false //Manda al 404 page
+        fallback: 'blocking' //deja pasar si no esta en los 151
     }
 }
 
 export const getStaticProps: GetStaticProps = async ({params}) => {
 
     const {name} = params as {name:string};
+
+    const pokemon = await getPokemonInfo(name);
+
+    if(!pokemon){
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false
+            }
+        }
+    }
   
     return {
       props: {
-        pokemon: await getPokemonInfo(name)
-      }
+        pokemon
+      },
+      revalidate: 86400 // 60*60*24, revalidar cada 24 horas
     }
   }
 
