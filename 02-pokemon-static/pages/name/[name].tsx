@@ -123,7 +123,7 @@ const PokemonByNamePage: NextPage<Props> = ({pokemon}) => {
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
 
-    const {data} = await pokeApi.get<PokemonListResponse>('/pokemon?limit=151');
+    const {data} = await pokeApi.get<PokemonListResponse>('/pokemon?limit=649');
 
     const pokemons151: string[] = data.results.map(({name}) => name);
         
@@ -139,7 +139,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
         //     }
         // ],
         //fallback: false //Manda al 404 page
-        fallback: 'blocking' //deja pasar si no esta en los 151
+        fallback: 'blocking' //deja pasar si no esta en los 649
     }
 }
 

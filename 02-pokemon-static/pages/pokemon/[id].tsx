@@ -122,7 +122,7 @@ const PokemonPage: NextPage<Props> = ({pokemon}) => {
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
     
-    const pokemons151 = [...Array(151)].map((value, index) => `${index+1}`);
+    const pokemons151 = [...Array(649)].map((value, index) => `${index+1}`);
 
     return {
         paths: pokemons151.map(id => ({
@@ -136,7 +136,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
         //     }
         // ],
        //fallback: false //Manda al 404 page
-       fallback: 'blocking' //deja pasar si no esta en los 151
+       fallback: 'blocking' //deja pasar si no esta en los 649
     }
 }
 
