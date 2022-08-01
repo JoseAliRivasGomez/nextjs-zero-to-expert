@@ -10,9 +10,9 @@ const HomePage: NextPage = () => {
 
   return (
     <Layout title='Home - OpenJira'>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} sx={{marginTop: 0.1}}>
         <Grid item xs={12} sm={4}>
-          <Card sx={{height: 'calc(100vh - 100px)'}}>
+          <Card sx={{height: 'calc(100vh - 115px)'}}>
             <CardHeader title="Pendientes" />
 
               <NewEntry />
@@ -20,14 +20,14 @@ const HomePage: NextPage = () => {
           </Card>
         </Grid>
         <Grid item xs={12} sm={4}>
-          <Card sx={{height: 'calc(100vh - 100px)'}}>
+          <Card sx={{height: 'calc(100vh - 115px)'}}>
             <CardHeader title="En Progreso" />
 
               <EntryList status='in-progress' />
           </Card>
         </Grid>
         <Grid item xs={12} sm={4}>
-          <Card sx={{height: 'calc(100vh - 100px)'}}>
+          <Card sx={{height: 'calc(100vh - 115px)'}}>
             <CardHeader title="Completadas" />
 
               <EntryList status='finished' />
