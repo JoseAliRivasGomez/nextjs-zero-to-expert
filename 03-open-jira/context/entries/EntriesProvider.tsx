@@ -33,7 +33,7 @@ export const EntriesProvider: FC<PropsWithChildren> = ({children}) => {
 
     const onEntryUpdated = async ({_id, description, status}: Entry, showSnackbar = false) => {
         try {
-            const {data} = await entriesApi.put<Entry>(`/entries/${_id}`, {description, status});
+            const {data} = await entriesApi.put<Entry>(`/entries?id=${_id}`, {description, status});
 
             dispatch({type: 'Entries - Entry updated', payload: data});
 
@@ -55,7 +55,7 @@ export const EntriesProvider: FC<PropsWithChildren> = ({children}) => {
 
     const deleteEntry = async (id: string, showSnackbar = false) => {
         try {
-            const {data} = await entriesApi.delete<Entry>(`/entries/${id}`);
+            const {data} = await entriesApi.delete<Entry>(`/entries?id=${id}`);
 
             dispatch({type: 'Entries - Delete Entry', payload: id});
 

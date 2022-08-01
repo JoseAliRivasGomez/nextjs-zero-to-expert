@@ -9,25 +9,29 @@ type Data =
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
 
-    const {id} = req.query;
-
-    if (!mongoose.isValidObjectId(id)){
-        return res.status(400).json({ message: 'El id no es valido ' + id });
-    }
-
-    switch (req.method) {
-        case 'GET':
-            return getEntry(req,res);
-
-        case 'PUT':
-            return updateEntry(req,res);
-
-        case 'DELETE':
-            return deleteEntry(req,res);
+    // const {id} = req.query;
     
-        default:
-            return res.status(400).json({ message: 'El metodo no existe' });
-    }
+    // if (!mongoose.isValidObjectId(id)){
+    //     return res.status(400).json({ message: 'El id no es valido ' + id });
+    // }
+
+    // switch (req.method) {
+    //     case 'GET':
+    //         return getEntry(req,res);
+
+    //     case 'PUT':
+    //         return updateEntry(req,res);
+
+    //     case 'DELETE':
+    //         return deleteEntry(req,res);
+    
+    //     default:
+    //         return res.status(400).json({ message: 'El metodo no existe' });
+    // }
+
+    res.status(200).json({
+        message: 'Hola',
+      })
 
 }
 
