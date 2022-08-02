@@ -48,7 +48,7 @@ const getEntries = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
             await disconnectDB();
     
             if(!entryToGet){
-                return res.status(400).json({message: 'No hay una entrada con ese ID: ' + id});
+                return res.status(404).json({message: 'No hay una entrada con ese ID: ' + id});
             }
     
             return res.status(200).json(entryToGet!);
@@ -109,7 +109,7 @@ const updateEntry = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
         if(!entryToUpdate){
             await disconnectDB();
-            return res.status(400).json({message: 'No hay una entrada con ese ID: ' + id});
+            return res.status(404).json({message: 'No hay una entrada con ese ID: ' + id});
         }
         
         const {
@@ -141,7 +141,7 @@ const deleteEntry = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
         if(!entryToDelete){
             await disconnectDB();
-            return res.status(400).json({message: 'No hay una entrada con ese ID: ' + id});
+            return res.status(404).json({message: 'No hay una entrada con ese ID: ' + id});
         }
 
         await EntryModel.findByIdAndDelete(id);
