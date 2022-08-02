@@ -1,8 +1,9 @@
 import type { NextPage } from 'next'
+import UserCard from '../ui/home/UserCard'
 
 const Home: NextPage = () => {
   return (
-    <h1>Teslo-shop</h1>
+    <UserCard />
   )
 }
 
