@@ -28,6 +28,10 @@
   background-color: #274494;
 }
 
+.btn1:hover {
+  background-color: gray;
+}
+
 
 .summary-card {
   border: 1px solid rgba(0, 0, 0, 0.1);
