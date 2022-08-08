@@ -161,6 +161,6 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
       }, 
       revalidate: 86400 // 60*60*24, revalidar cada 24 horas
     }
-  }
+}
 
 export default PokemonPage
