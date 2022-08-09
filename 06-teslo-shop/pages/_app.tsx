@@ -6,6 +6,7 @@ import { lightTheme } from '../themes/light-theme';
 import { SWRConfig } from 'swr';
 import { UIProvider } from '../context/ui/UIProvider';
 import { CartProvider } from '../context/cart/CartProvider';
+import { AuthProvider } from '../context/auth/AuthProvider';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -15,14 +16,16 @@ function MyApp({ Component, pageProps }: AppProps) {
         fetcher: (resource, init) => fetch(resource, init).then(res => res.json())
       }}
     >
-      <CartProvider>
-        <UIProvider>
-          <ThemeProvider theme={lightTheme}>
-            <CssBaseline />
-            <Component {...pageProps} />
-          </ThemeProvider>
-        </UIProvider>
-      </CartProvider>
+      <AuthProvider>
+        <CartProvider>
+          <UIProvider>
+            <ThemeProvider theme={lightTheme}>
+              <CssBaseline />
+              <Component {...pageProps} />
+            </ThemeProvider>
+          </UIProvider>
+        </CartProvider>
+      </AuthProvider>
     </SWRConfig>
   )
 }
