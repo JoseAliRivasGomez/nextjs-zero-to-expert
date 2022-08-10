@@ -39,7 +39,9 @@ const RegisterPage = () => {
             return;
         }
         
-        router.replace('/');
+        const destination = router.query.p?.toString() || '/';
+
+        router.replace(destination);
 
     }
 
@@ -74,13 +76,13 @@ const RegisterPage = () => {
                     </Grid>
 
                     <Grid item xs={12}>
-                        <Button color='info' sx={{backgroundColor: 'secondary.main'}} className='circular-btn' size='large' fullWidth type='submit'>
+                        <Button color='info' sx={{backgroundColor: 'secondary.main', "&:hover": {backgroundColor: '#274494'}}} className='circular-btn' size='large' fullWidth type='submit'>
                             Crear cuenta
                         </Button>
                     </Grid>
 
                     <Grid item xs={12} display='flex' justifyContent='end'>
-                        <NextLink href="/auth/login" passHref>
+                        <NextLink href={ router.query.p ? `/auth/login?p=${router.query.p}` : `/auth/login`} passHref>
                             <Link underline='always'>
                                 ¿Ya tienes cuenta?
                             </Link>

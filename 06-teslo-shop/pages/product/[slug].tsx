@@ -88,7 +88,7 @@ const ProductPage: NextPage<Props> = ({product}) => {
 
             {
                 (product.inStock > 0) ? (
-                  <Button color='info' sx={{backgroundColor: 'secondary.main'}} className='circular-btn' onClick={onAddProduct}>
+                  <Button color='info' sx={{backgroundColor: 'secondary.main', "&:hover": {backgroundColor: '#274494'} }} className='circular-btn' onClick={onAddProduct}>
                     {
                       tempCartProduct.size
                       ? 'Agregar al carrito'

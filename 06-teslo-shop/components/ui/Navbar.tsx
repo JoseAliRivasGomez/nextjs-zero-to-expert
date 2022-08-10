@@ -42,7 +42,7 @@ export const Navbar = () => {
                     <Link underline="none">
                         <Button className={asPath === path1 ? 'btn1' : ''}
                             color={asPath === path1 ? 'info' : 'primary'}
-                            sx={{backgroundColor: asPath === path1 ? 'primary.main' : 'info.main' }}
+                            sx={{backgroundColor: asPath === path1 ? 'primary.main' : 'info.main', "&:hover": {backgroundColor: asPath === path1 ? 'gray' : ''} }}
                         >Hombres</Button>
                     </Link>
                 </NextLink>
@@ -50,7 +50,7 @@ export const Navbar = () => {
                     <Link underline="none">
                         <Button className={asPath === path2 ? 'btn1' : ''}
                             color={asPath === path2 ? 'info' : 'primary'}
-                            sx={{backgroundColor: asPath === path2 ? 'primary.main' : 'info.main' }}
+                            sx={{backgroundColor: asPath === path2 ? 'primary.main' : 'info.main', "&:hover": {backgroundColor: asPath === path1 ? 'gray' : ''} }}
                         >Mujeres</Button>
                     </Link>
                 </NextLink>
@@ -58,7 +58,7 @@ export const Navbar = () => {
                     <Link underline="none">
                         <Button className={asPath === path3 ? 'btn1' : ''}
                             color={asPath === path3 ? 'info' : 'primary'}
-                            sx={{backgroundColor: asPath === path3 ? 'primary.main' : 'info.main' }}
+                            sx={{backgroundColor: asPath === path3 ? 'primary.main' : 'info.main', "&:hover": {backgroundColor: asPath === path1 ? 'gray' : ''} }}
                         >Niños</Button>
                     </Link>
                 </NextLink>

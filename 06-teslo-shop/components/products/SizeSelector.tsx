@@ -15,7 +15,7 @@ export const SizeSelector: FC<Props> = ({selectedSize, sizes, onSelectedSize}) =
         {
             sizes.map(size => (
                 <Button key={size} size='small' color={selectedSize === size ? 'info' : 'primary'} 
-                    sx={{backgroundColor: selectedSize === size ? 'primary.main' : 'info.main'}}
+                    sx={{backgroundColor: selectedSize === size ? 'primary.main' : 'info.main', "&:hover": {backgroundColor: selectedSize === size ? 'gray' : ''} }}
                     className={selectedSize === size ? 'btn1' : ''}
                     onClick={() =>onSelectedSize(size)}>
                     {size}
