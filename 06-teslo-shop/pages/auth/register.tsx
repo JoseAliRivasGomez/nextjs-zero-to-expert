@@ -9,6 +9,8 @@ import { isEmail } from '../../utils/validations';
 import tesloApi from '../../api/tesloApi';
 import { useRouter } from 'next/router';
 import { AuthContext } from '../../context/auth/AuthContext';
+import { getSession, signIn } from 'next-auth/react';
+import { GetServerSideProps } from 'next'
 
 type FormData = {
     email: string,
@@ -39,9 +41,10 @@ const RegisterPage = () => {
             return;
         }
         
-        const destination = router.query.p?.toString() || '/';
+        // const destination = router.query.p?.toString() || '/';
+        // router.replace(destination);
 
-        router.replace(destination);
+        await signIn('credentials', {email, password});
 
     }
 
@@ -93,6 +96,28 @@ const RegisterPage = () => {
         </form>
     </AuthLayout>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async ({req, query}) => {
+     
+    const session = await getSession({req});
+
+    const {p = '/'} = query;
+
+    if(session){
+        return {
+            redirect: {
+                destination: p.toString(),
+                permanent: false
+            }
+        }
+    }
+
+    return {
+        props: {
+            
+        }
+    }
 }
 
 export default RegisterPage

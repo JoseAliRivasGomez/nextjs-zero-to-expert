@@ -4,13 +4,23 @@ import { CartList } from '../../components/cart/CartList';
 import { OrderSummary } from '../../components/cart/OrderSummary';
 import { ShopLayout } from '../../components/layouts/ShopLayout';
 import NextLink from "next/link"
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { CartContext } from '../../context/cart/CartContext';
 import { countries } from '../../utils/countries';
+import Cookies from 'js-cookie';
+import { useRouter } from 'next/router';
 
 const SummaryPage = () => {
 
     const {shippingAddress, numberOfItems} = useContext(CartContext);
+    const router = useRouter();
+
+    useEffect(() => {
+      if(!Cookies.get('firstName')){
+        router.push('/checkout/address');
+      }
+    }, [router])
+    
 
     if(!shippingAddress){
         <></>;
