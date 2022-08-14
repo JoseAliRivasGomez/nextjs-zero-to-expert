@@ -6,12 +6,14 @@ import { FC, useContext } from 'react';
 import { CartContext } from '../../context/cart/CartContext';
 import { ICartProduct } from '../../interfaces/cart';
 import { currencyFormat } from '../../utils/currency';
+import { IOrderItem } from '../../interfaces/order';
 
 interface Props {
     editable?: boolean;
+    products?: IOrderItem[];
 }
 
-export const CartList: FC<Props> = ({editable = false}) => {
+export const CartList: FC<Props> = ({editable = false, products}) => {
 
     const {cart, updateCartQuantity, removeCartProduct} = useContext(CartContext);
 
@@ -24,10 +26,12 @@ export const CartList: FC<Props> = ({editable = false}) => {
         removeCartProduct(product);
     }
 
+    const productsToShow = products ? products : cart;
+
   return (
     <>
         {
-            cart.map(product => (
+            productsToShow.map(product => (
                 <Grid container spacing={2} key={product.slug + product.size} sx={{mb: 1}}>
                     <Grid item xs={3}>
                         <NextLink href={`/product/${product.slug}`} passHref>
@@ -45,7 +49,7 @@ export const CartList: FC<Props> = ({editable = false}) => {
 
                             {
                                 editable
-                                ? <ItemCounter currentValue={product.quantity} maxValue={10} updatedQuantity={(value) => onNewCartQuantity(product, value)} />
+                                ? <ItemCounter currentValue={product.quantity} maxValue={10} updatedQuantity={(value) => onNewCartQuantity(product as ICartProduct, value)} />
                                 : <Typography variant='h6'>{product.quantity} {product.quantity > 1 ? 'productos':'producto'}</Typography>
                             }
 
@@ -57,7 +61,7 @@ export const CartList: FC<Props> = ({editable = false}) => {
 
                         {
                             editable && (
-                                <Button variant='text' color='error' onClick={() => onRemoveProductFromCart(product)}>
+                                <Button variant='text' color='error' onClick={() => onRemoveProductFromCart(product as ICartProduct)}>
                                     Remover
                                 </Button>
                             )
